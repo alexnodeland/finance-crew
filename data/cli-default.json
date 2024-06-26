@@ -1,0 +1,7 @@
+{
+    "stock_selection": "AAPL",
+    "initial_capital": "100000",
+    "risk_tolerance": "Medium",
+    "trading_strategy_preference": "Day Trading",
+    "news_impact_consideration": true
+}

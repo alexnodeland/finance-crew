@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+db/
+
+# Output directories
+output/
+
+# Development Tools
+.aider*
