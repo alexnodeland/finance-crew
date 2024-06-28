@@ -120,5 +120,5 @@ class FinanceCrew:
             process=Process.hierarchical,
             manager_llm=ChatOpenAI(model="gpt-4o", temperature=0.7),
             output_log_file="output/log.txt",
-            full_output=True,
+            # full_output=True,
         )
