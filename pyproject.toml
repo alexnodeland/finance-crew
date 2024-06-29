@@ -11,7 +11,7 @@ agentops = "^0.2.3"
 streamlit = "^1.36.0"
 
 [tool.poetry.scripts]
-finance-crew-cli = "finance_crew.main:cli"
+finance-crew-cli = "finance_crew.main:run_cli"
 finance-crew-app = "finance_crew.main:run_app"
 
 [tool.poetry.group.dev.dependencies]
