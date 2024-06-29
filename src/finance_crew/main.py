@@ -1,9 +1,8 @@
 import subprocess
 from finance_crew.cli.main import cli
-from finance_crew.app.app import app
 
 def run_app():
-    subprocess.run(["streamlit", "run", "src/finance_crew/app/app.py"])
+    subprocess.run(["streamlit", "run", "src/finance_crew/app/Home.py"])
 
 def run_cli():
     cli()
