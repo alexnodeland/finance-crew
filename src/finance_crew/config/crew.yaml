@@ -1,0 +1,43 @@
+crew:
+  process: hierarchical
+  verbose: 2
+
+manager_llm:
+  model: gpt-4o
+  temperature: 0.7
+
+default_agent_llm:
+  model: gpt-3.5-turbo
+  temperature: 0.5
+
+agents:
+  data_analyst:
+    allow_delegation: true
+    llm:
+      model: gpt-4o
+      temperature: 0.5
+  trading_strategy_developer:
+    allow_delegation: true
+    llm:
+      model: gpt-4o
+      temperature: 0.5
+  trade_advisor:
+    allow_delegation: true
+    llm:
+      model: gpt-4o
+      temperature: 0.5
+  risk_advisor:
+    allow_delegation: true
+    llm:
+      model: gpt-4o
+      temperature: 0.5
+
+tasks:
+  data_analysis:
+    human_input: false
+  strategy_development:
+    human_input: false
+  execution_planning:
+    human_input: false
+  risk_assessment:
+    human_input: false
