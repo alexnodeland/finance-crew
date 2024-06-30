@@ -11,18 +11,17 @@ st.set_page_config(page_title="Finance Crew - Analysis", page_icon="💹", layou
 def Analysis():
     st.title("✨ Generate Financial Analysis")
 
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        disclaimer()
-        financial_trading_inputs = parameters()
+    disclaimer()
+    financial_trading_inputs = parameters()
+    
+    if st.button("Generate Financial Analysis", use_container_width=True):
+        with st.spinner("Generating financial analysis... 📈"):
+            finance_crew = FinanceCrew()
+            result_placeholder = st.empty()
+            run_analysis(finance_crew, financial_trading_inputs, result_placeholder)
         
-        if st.button("Generate Financial Analysis", use_container_width=True):
-            with st.spinner("Generating financial analysis... 📈"):
-                finance_crew = FinanceCrew()
-                result_placeholder = st.empty()
-                run_analysis(finance_crew, financial_trading_inputs, result_placeholder)
-            
-            analysis_result(result_placeholder)
+        analysis_result(result_placeholder)
 
 if __name__ == "__main__":
     Analysis()
+    
