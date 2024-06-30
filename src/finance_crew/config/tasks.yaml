@@ -1,78 +1,63 @@
 data_analysis:
-  description: >
-    Conduct comprehensive market analysis for {stock_selection} using:
-    1. Technical indicators (e.g., MACD, RSI, Bollinger Bands, Moving Averages)
-    2. Fundamental analysis (e.g., P/E ratio, EPS growth, Debt-to-Equity, Free Cash Flow)
-    3. Sentiment analysis of news, social media, and analyst reports
-    4. Correlation with broader market indices and sector performance
-    5. Macroeconomic factors (e.g., interest rates, GDP growth, inflation)
-    Update analysis with latest data as of {current_date}.
-  expected_output: >
-    Detailed insights and actionable alerts about significant market 
-    opportunities or threats for {stock_selection}.
-    Include:
-    - Key metrics and their interpretations
-    - Visual representations (charts, graphs) of important trends
-    - Comparative analysis with industry peers
-    - Source links formatted as markdown (e.g., [source](http://www.example.com))
+  description: 'Conduct comprehensive market analysis for {stock_selection} using:
+    1. Technical indicators (e.g., MACD, RSI, Bollinger Bands, Moving Averages) 2.
+    Fundamental analysis (e.g., P/E ratio, EPS growth, Debt-to-Equity, Free Cash Flow)
+    3. Sentiment analysis of news, social media, and analyst reports 4. Correlation
+    with broader market indices and sector performance 5. Macroeconomic factors (e.g.,
+    interest rates, GDP growth, inflation) Update analysis with latest data as of
+    {current_date}.'
+  expected_output: 'Detailed insights and actionable alerts about significant market  opportunities
+    or threats for {stock_selection}. Include: - Key metrics and their interpretations
+    - Visual representations (charts, graphs) of important trends - Comparative analysis
+    with industry peers - Source links formatted as markdown (e.g., [source](http://www.example.com))
     Ensure the report is comprehensive, easy to understand, and actionable for stakeholders.
 
-strategy_development:
-  description: >
-    Develop and refine trading strategies based on 
-    the insights from the Data Analyst, user-defined risk tolerance ({risk_tolerance}),
-    and trading preferences ({trading_strategy_preference}). 
-    Consider:
-    - Short-term and long-term market outlook
-    - Liquidity and volatility of {stock_selection}
-    - Potential catalysts (e.g., earnings reports, product launches)
-    - Historical performance of similar strategies
-    Ensure strategies are up-to-date and optimized for current market conditions as of {current_date}.
-  expected_output: >
-    A set of potential trading strategies for {stock_selection} that align with 
-    the user's risk tolerance and preferences. Include:
-    - Detailed rationale for each strategy
-    - Expected returns and potential drawdowns
-    - Key performance indicators (KPIs) to monitor
-    - Backtesting results (if applicable)
-    - Source links formatted as markdown (e.g., [source](http://www.example.com))
-    Provide clear recommendations and prioritize strategies based on current market conditions.
-
+    '
 execution_planning:
-  description: >
-    Analyze approved trading strategies to determine optimal 
-    execution methods for {stock_selection}, considering:
-    - Current market conditions and liquidity
-    - Historical and real-time order book data
-    - Potential market impact of trades
-    - Transaction costs and slippage
-    Provide detailed execution plans, including timing, quantity, 
-    and pricing of trades.
-    Ensure plans are feasible and aligned with approved strategies as of {current_date}.
-  expected_output: >
-    Detailed execution plans suggesting how and when to execute trades for {stock_selection}.
-    Include:
-    - Specific entry and exit points
-    - Order types (e.g., market, limit, stop) and their rationale
-    - Execution algorithms and their parameters (if applicable)
-    - Contingency plans for various market scenarios
-    - Source links formatted as markdown (e.g., [source](http://www.example.com))
-    Ensure the report is comprehensive, actionable, and easy to understand for stakeholders.
+  description: 'Analyze approved trading strategies to determine optimal  execution
+    methods for {stock_selection}, considering: - Current market conditions and liquidity
+    - Historical and real-time order book data - Potential market impact of trades
+    - Transaction costs and slippage Provide detailed execution plans, including timing,
+    quantity,  and pricing of trades. Ensure plans are feasible and aligned with approved
+    strategies as of {current_date}.
 
+    '
+  expected_output: 'Detailed execution plans suggesting how and when to execute trades
+    for {stock_selection}. Include: - Specific entry and exit points - Order types
+    (e.g., market, limit, stop) and their rationale - Execution algorithms and their
+    parameters (if applicable) - Contingency plans for various market scenarios -
+    Source links formatted as markdown (e.g., [source](http://www.example.com)) Ensure
+    the report is comprehensive, actionable, and easy to understand for stakeholders.
 
+    '
 risk_assessment:
-  description: >
-    Evaluate key risks for {stock_selection} trading strategies:
-    - Market risk (volatility, liquidity)
-    - Operational risk
-    - Regulatory risk
-    Analyze potential impacts and suggest mitigation strategies.
-  expected_output: >
-    Concise risk analysis for {stock_selection} including:
-    - Risk matrix with likelihood and impact assessments
-    - Scenario analysis (best-case, worst-case, most likely outcomes)
-    - Key mitigation strategies
-    - Recommended risk limits and stop-loss levels
-    - Source links formatted as markdown (e.g., [source](http://www.example.com))
+  description: 'Evaluate key risks for {stock_selection} trading strategies: - Market
+    risk (volatility, liquidity) - Operational risk - Regulatory risk Analyze potential
+    impacts and suggest mitigation strategies.
+
+    '
+  expected_output: 'Concise risk analysis for {stock_selection} including: - Risk
+    matrix with likelihood and impact assessments - Scenario analysis (best-case,
+    worst-case, most likely outcomes) - Key mitigation strategies - Recommended risk
+    limits and stop-loss levels - Source links formatted as markdown (e.g., [source](http://www.example.com))
     Provide clear, actionable risk management recommendations.
 
+    '
+strategy_development:
+  description: 'Develop and refine trading strategies based on  the insights from
+    the Data Analyst, user-defined risk tolerance ({risk_tolerance}), and trading
+    preferences ({trading_strategy_preference}).  Consider: - Short-term and long-term
+    market outlook - Liquidity and volatility of {stock_selection} - Potential catalysts
+    (e.g., earnings reports, product launches) - Historical performance of similar
+    strategies Ensure strategies are up-to-date and optimized for current market conditions
+    as of {current_date}.
+
+    '
+  expected_output: 'A set of potential trading strategies for {stock_selection} that
+    align with  the user''s risk tolerance and preferences. Include: - Detailed rationale
+    for each strategy - Expected returns and potential drawdowns - Key performance
+    indicators (KPIs) to monitor - Backtesting results (if applicable) - Source links
+    formatted as markdown (e.g., [source](http://www.example.com)) Provide clear recommendations
+    and prioritize strategies based on current market conditions.
+
+    '

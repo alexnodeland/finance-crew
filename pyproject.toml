@@ -8,9 +8,11 @@ authors = ["Alex Nodelad <alex@ournature.studio>"]
 python = ">=3.10,<=3.13"
 crewai = {version = "^0.32.2", extras = ["tools"]}
 agentops = "^0.2.3"
+streamlit = "^1.36.0"
 
 [tool.poetry.scripts]
-finance-crew = "finance_crew.main:cli"
+finance-crew-cli = "finance_crew.main:run_cli"
+finance-crew-app = "finance_crew.main:run_app"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.4.2"
