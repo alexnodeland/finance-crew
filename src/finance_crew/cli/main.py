@@ -1,6 +1,6 @@
 from datetime import datetime
 from finance_crew.crew import FinanceCrew
-from finance_crew.utils.utils import load_example_inputs
+from finance_crew.utils.load_configs import load_example_inputs
 from .ui import print_welcome_message, print_ascii_logo, loading_animation
 from .input_handler import get_financial_trading_inputs
 from .output_handler import display_inputs, save_result

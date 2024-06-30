@@ -127,7 +127,7 @@ class FinanceCrew:
             tasks=self.tasks,
             verbose=self.crew_config['crew']['verbose'],
             process=Process[self.crew_config['crew']['process']],
-            manager_llm=ChatOpenAI(model="gpt-4o", temperature=0.7),
+            manager_llm=ChatOpenAI(**self.crew_config['manager_llm']),
             output_log_file="output/log.txt",
             # full_output=True,
         )
