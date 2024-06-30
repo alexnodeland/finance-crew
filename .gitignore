@@ -19,3 +19,6 @@ output/
 
 # Development Tools
 .aider*
+
+# Miscellaneous
+.DS_Store

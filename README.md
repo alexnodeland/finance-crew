@@ -116,6 +116,8 @@ You have two options to run the application:
     
 The automated script is recommended for most users as it simplifies the setup process.
 
+For more detailed instructions on usage of the web app, refer to the [User Guide](GUIDE.md).
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
