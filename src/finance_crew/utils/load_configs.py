@@ -4,6 +4,10 @@ import yaml
 def load_task_config():
     with open("src/finance_crew/config/tasks.yaml", "r") as file:
         return yaml.safe_load(file)
+    
+def save_task_config(config):
+    with open("src/finance_crew/config/tasks.yaml", "w") as file:
+        yaml.safe_dump(config, file)
 
 def load_agent_config():
     with open("src/finance_crew/config/agents.yaml", "r") as file:
