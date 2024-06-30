@@ -20,12 +20,15 @@ def render_agent_role_settings(role, agent_config, crew_config):
     agent_config_role = agent_config.get(role, {})
     crew_config_role = crew_config.get("agents", {}).get(role, {})
     
-    # Use session state to track changes
-    if f"{role}_changed" not in st.session_state:
-        st.session_state[f"{role}_changed"] = False
+    # Use a consistent key format for session state
+    role_key = role.lower().replace(" ", "_")
+    
+    # Initialize session state
+    if f"{role_key}_changed" not in st.session_state:
+        st.session_state[f"{role_key}_changed"] = False
 
     def mark_changed():
-        st.session_state[f"{role}_changed"] = True
+        st.session_state[f"{role_key}_changed"] = True
 
     with st.expander("Model Settings"):
         col1, col2 = st.columns([3, 1])
@@ -43,6 +46,8 @@ def render_agent_role_settings(role, agent_config, crew_config):
                                 on_change=mark_changed)
         
     # Display agent config and tools
+    role = st.text_input("Role", value=agent_config_role.get("role", ""),
+                        key=f"{role}_role", on_change=mark_changed)
     goal = st.text_area("Role Goal", value=agent_config_role.get("goal", ""), 
                         key=f"{role}_goal", on_change=mark_changed)
     backstory = st.text_area("Role Description", value=agent_config_role.get("backstory", ""), 
@@ -50,10 +55,11 @@ def render_agent_role_settings(role, agent_config, crew_config):
     allow_delegation = st.checkbox("Allow Delegation", value=crew_config_role.get("allow_delegation", False), 
                                    key=f"{role}_allow_delegation", on_change=mark_changed)
 
-    if st.session_state[f"{role}_changed"]:
-        if st.button("Save", key=f"{role}_save"):
+    if st.session_state[f"{role_key}_changed"]:
+        if st.button("Save", key=f"{role_key}_save"):
             # Update agent config
             new_agent_config = {
+                "role": role,
                 "goal": goal,
                 "backstory": backstory,
             }
@@ -70,4 +76,4 @@ def render_agent_role_settings(role, agent_config, crew_config):
             save_crew_config(crew_config)
             
             st.success(f"Configuration for {role} saved successfully.")
-            st.session_state[f"{role}_changed"] = False
+            st.session_state[f"{role_key}_changed"] = False

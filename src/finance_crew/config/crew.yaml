@@ -1,4 +1,11 @@
 agents:
+  ? 'Data Analyst
+
+    '
+  : allow_delegation: true
+    llm:
+      model: gpt-4o
+      temperature: 0.5
   data_analyst:
     allow_delegation: true
     llm:

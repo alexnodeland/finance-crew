@@ -30,12 +30,12 @@ def render_individual_task_settings(task, task_config):
 
     if st.session_state[f"{task}_changed"]:
         if st.button("Save", key=f"{task}_save"):
-            # Update task config
-            task_config[task] = {
+            # Update task config for this specific task
+            updated_task_config = {
                 "description": description,
                 "expected_output": expected_output,
             }
-            save_task_config(task_config)
+            save_task_config(task, updated_task_config)
             
             st.success(f"Configuration for {task} saved successfully.")
             st.session_state[f"{task}_changed"] = False
