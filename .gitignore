@@ -15,7 +15,7 @@ __pycache__/
 db/
 
 # Output directories
-output/
+/output/
 
 # Development Tools
 .aider*
