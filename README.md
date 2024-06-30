@@ -72,24 +72,49 @@ poetry install
 
 ## 🚀 Usage
 
-1. Copy the `.env.example` file to `.env` and fill in the required environment variables.
+## 🚀 Usage
 
-2. (Optional) Modify the `data/cli-default.json` file to customize defaults to your specific data, including:
+You have two options to run the application:
 
-    - `stock_selection`: The stock or asset you want to analyze.
-    - `initial_capital`: The amount of capital you are starting with.
-    - `risk_tolerance`: Your risk tolerance level (e.g., low, medium, high).
-    - `trading_strategy_preference`: Your preferred trading style (e.g., momentum, value, mean reversion).
-    - `news_impact_consideration`: Whether to consider news impact in the analysis (true/false).
+1. Using the automated script (recommended):
 
+   Run the `run.sh` script:
 
-3. Run the application:
+    ```sh
+    ./run.sh
+    ```
 
-```sh
-poetry run finance-crew
-```
+   This script will:
+   - Check for Poetry installation and install it if necessary
+   - Install or update dependencies
+   - Prompt you to choose between running the CLI or web application
+   - Handle environment setup automatically
 
-4. Follow the CLI prompts to use the application, or press `Enter` to use the default values, set in `cli-default.json`.
+2. Manual execution:
+
+   a. Copy the `.env.example` file to `.env` and fill in the required environment variables.
+
+   b. (Optional) Modify the `data/cli-default.json` file to customize defaults for your specific data.
+
+   c. Run the desired application:
+
+   - For the CLI application:
+
+        ```sh
+        poetry run finance-crew-cli
+        ```
+
+     Follow the CLI prompts or press `Enter` to use the default values from `cli-default.json`.
+
+   - For the web application:
+
+        ```sh
+        poetry run finance-crew-app
+        ```
+
+     Open your browser and navigate to `http://localhost:8501` to access the web application.
+    
+The automated script is recommended for most users as it simplifies the setup process.
 
 ## 🤝 Contributing
 
