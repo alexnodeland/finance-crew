@@ -31,21 +31,6 @@ def render_agent_role_settings(role, agent_config, crew_config):
     def mark_changed():
         st.session_state[f"{role_key}_changed"] = True
 
-    with st.expander("Model Settings"):
-        col1, col2 = st.columns([3, 1])
-        with col1:
-            st.write("Settings")
-        with col2:
-            st.write("")  # Placeholder for alignment
-        model = st.selectbox("Model", options=["gpt-3.5-turbo", "gpt-4o"], 
-                             key=f"{role}_model", 
-                             index=["gpt-3.5-turbo", "gpt-4o"].index(crew_config_role.get("llm", {}).get("model", "gpt-3.5-turbo")),
-                             on_change=mark_changed)
-        temperature = st.slider("Temperature", 0.0, 1.0, 
-                                crew_config_role.get("llm", {}).get("temperature", 0.5), 0.1, 
-                                key=f"{role}_temperature",
-                                on_change=mark_changed)
-
     with st.container(border=True):
         st.write(f"#### Configure your {role.replace('_', ' ').title()} agent")
         with st.expander("Instructions"):
@@ -72,6 +57,22 @@ def render_agent_role_settings(role, agent_config, crew_config):
 
         # Display agent config and tools
         st.text(f"Role: {role.replace('_', ' ').title()}", help="The specific role this agent plays within the crew.")
+
+        with st.expander("Model Settings"):
+            col1, col2 = st.columns([3, 1])
+            with col1:
+                st.write("Settings")
+            with col2:
+                st.write("")  # Placeholder for alignment
+            model = st.selectbox("Model", options=["gpt-3.5-turbo", "gpt-4o"], 
+                                key=f"{role}_model", 
+                                index=["gpt-3.5-turbo", "gpt-4o"].index(crew_config_role.get("llm", {}).get("model", "gpt-3.5-turbo")),
+                                on_change=mark_changed)
+            temperature = st.slider("Temperature", 0.0, 1.0, 
+                                    crew_config_role.get("llm", {}).get("temperature", 0.5), 0.1, 
+                                    key=f"{role}_temperature",
+                                    on_change=mark_changed)
+        
         goal = st.text_area("Goal", value=agent_config_role.get("goal", ""), 
                             key=f"{role}_goal", on_change=mark_changed,
                             help="""The primary objective or purpose of this agent's role.
