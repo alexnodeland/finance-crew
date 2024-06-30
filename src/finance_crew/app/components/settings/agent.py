@@ -1,5 +1,6 @@
 import streamlit as st
 from finance_crew.utils.load_configs import load_agent_config, save_agent_config, load_crew_config, save_crew_config
+from finance_crew.app.components.content.fstring_warning import fstring_warning
 
 def render_agent_settings():
     agent_roles = ["data_analyst", "trading_strategy_developer", "trade_advisor", "risk_advisor"]
@@ -44,16 +45,44 @@ def render_agent_role_settings(role, agent_config, crew_config):
                                 crew_config_role.get("llm", {}).get("temperature", 0.5), 0.1, 
                                 key=f"{role}_temperature",
                                 on_change=mark_changed)
-        
-    # Display agent config and tools
-    role = st.text_input("Role", value=agent_config_role.get("role", ""),
-                        key=f"{role}_role", on_change=mark_changed)
-    goal = st.text_area("Role Goal", value=agent_config_role.get("goal", ""), 
-                        key=f"{role}_goal", on_change=mark_changed)
-    backstory = st.text_area("Role Description", value=agent_config_role.get("backstory", ""), 
-                             key=f"{role}_backstory", on_change=mark_changed)
-    allow_delegation = st.checkbox("Allow Delegation", value=crew_config_role.get("allow_delegation", False), 
-                                   key=f"{role}_allow_delegation", on_change=mark_changed)
+
+    with st.container(border=True):
+        with st.expander("Instructions"):
+            st.markdown(f"""
+            ### Configure your {role.replace('_', ' ').title()} agent
+
+            This section allows you to configure the settings for the {role.replace('_', ' ').title()}. Follow the steps below to update the configurations:
+
+            1. **Model Settings**:
+                - **Model**: Select the language model to be used by the {role.replace('_', ' ').title()} (e.g., `gpt-3.5-turbo` or `gpt-4o`).
+                - **Temperature**: Adjust the temperature setting for the model, which controls the randomness of the output.
+
+            2. **Agent Configuration**:
+                - **Role**: Displays the specific role of the {role.replace('_', ' ').title()} within the crew.
+                - **Goal**: Enter the primary objective or purpose of the {role.replace('_', ' ').title()}'s role. Describe what the {role.replace('_', ' ').title()} aims to achieve.
+                - **Backstory**: Provide a detailed background and context for the {role.replace('_', ' ').title()}'s role and responsibilities. Include relevant experience, skills, and personality traits.
+                - **Allow Delegation**: Check this box to enable the {role.replace('_', ' ').title()} to delegate tasks to other agents in the crew.
+
+            3. **Saving Changes**:
+                - After making changes, click the "Save" button to update the configurations. A success message will confirm that the settings have been saved.
+            """)
+            
+            fstring_warning()
+
+        # Display agent config and tools
+        st.text(f"Role: {role.replace('_', ' ').title()}", help="The specific role this agent plays within the crew.")
+        goal = st.text_area("Goal", value=agent_config_role.get("goal", ""), 
+                            key=f"{role}_goal", on_change=mark_changed,
+                            help="""The primary objective or purpose of this agent's role.
+                            Describe what this agent aims to achieve within the crew.""")
+        backstory = st.text_area("Backstory", value=agent_config_role.get("backstory", ""), 
+                                key=f"{role}_backstory", on_change=mark_changed,
+                                help="""Detailed background and context for this agent's role and responsibilities.
+                                Include relevant experience, skills, and personality traits that shape the agent's approach.""")
+        allow_delegation = st.checkbox("Allow Delegation", value=crew_config_role.get("allow_delegation", False), 
+                                    key=f"{role}_allow_delegation", on_change=mark_changed,
+                                    help="""Enable this agent to delegate tasks to other agents in the crew.
+                                    When checked, this agent can assign subtasks to other agents for more efficient teamwork.""")
 
     if st.session_state[f"{role_key}_changed"]:
         if st.button("Save", key=f"{role_key}_save"):

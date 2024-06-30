@@ -1,12 +1,13 @@
 import streamlit as st
 from finance_crew.utils.load_configs import load_task_config, save_task_config
+from finance_crew.app.components.content.fstring_warning import fstring_warning
 
 def render_task_settings():
     task_config = load_task_config()
     
     with st.expander("Task Config"):        
         st.write(task_config)
-    
+
     task_tabs = st.tabs([task.replace("_", " ").title() for task in task_config.keys()])
     
     for task, tab in zip(task_config.keys(), task_tabs):
@@ -23,10 +24,27 @@ def render_individual_task_settings(task, task_config):
     def mark_changed():
         st.session_state[f"{task}_changed"] = True
 
-    description = st.text_area("Description", value=task_config_data.get("description", ""), 
-                               key=f"{task}_description", on_change=mark_changed)
-    expected_output = st.text_area("Expected Output", value=task_config_data.get("expected_output", ""), 
-                                   key=f"{task}_expected_output", on_change=mark_changed)
+    with st.container(border=True):
+        with st.expander("Instructions"):
+            st.markdown(f"""
+            ### Configure the {task.replace("_", " ").title()} task
+
+            This section allows you to configure the settings for the {task.replace("_", " ").title()} task. Follow the steps below to update the configurations:
+
+            1. **{task.replace("_", " ").title()} Task Details**:
+                - **Description**: Provide a detailed description of the {task.replace("_", " ").title()} task.
+                - **Expected Output**: Specify the expected output or result of the {task.replace("_", " ").title()} task.
+
+            2. **Saving Changes**:
+                - After making changes, click the "Save" button to update the configurations. A success message will confirm that the settings have been saved.
+            """)
+            
+            fstring_warning()
+
+        description = st.text_area("Description", value=task_config_data.get("description", ""), 
+                                key=f"{task}_description", on_change=mark_changed)
+        expected_output = st.text_area("Expected Output", value=task_config_data.get("expected_output", ""), 
+                                    key=f"{task}_expected_output", on_change=mark_changed)
 
     if st.session_state[f"{task}_changed"]:
         if st.button("Save", key=f"{task}_save"):
