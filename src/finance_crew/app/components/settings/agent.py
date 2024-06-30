@@ -8,8 +8,8 @@ def render_agent_settings():
     agent_config = load_agent_config()
     crew_config = load_crew_config()
     
-    with st.expander("Agent Config"):        
-        st.write(agent_config)
+    # with st.expander("Agent Config"):        
+    #     st.write(agent_config)
     
     agent_tabs = st.tabs([role.replace("_", " ").title() for role in agent_roles])
     
@@ -47,9 +47,10 @@ def render_agent_role_settings(role, agent_config, crew_config):
                                 on_change=mark_changed)
 
     with st.container(border=True):
+        st.write(f"#### Configure your {role.replace('_', ' ').title()} agent")
         with st.expander("Instructions"):
             st.markdown(f"""
-            ### Configure your {role.replace('_', ' ').title()} agent
+            ##### How to configure your {role.replace('_', ' ').title()} agent
 
             This section allows you to configure the settings for the {role.replace('_', ' ').title()}. Follow the steps below to update the configurations:
 

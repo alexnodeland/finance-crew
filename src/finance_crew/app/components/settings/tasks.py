@@ -5,8 +5,8 @@ from finance_crew.app.components.content.fstring_warning import fstring_warning
 def render_task_settings():
     task_config = load_task_config()
     
-    with st.expander("Task Config"):        
-        st.write(task_config)
+    # with st.expander("Task Config"):        
+    #     st.write(task_config)
 
     task_tabs = st.tabs([task.replace("_", " ").title() for task in task_config.keys()])
     
@@ -25,9 +25,10 @@ def render_individual_task_settings(task, task_config):
         st.session_state[f"{task}_changed"] = True
 
     with st.container(border=True):
+        st.write(f"#### Configure your {task.replace('_', ' ').title()} task")
         with st.expander("Instructions"):
             st.markdown(f"""
-            ### Configure the {task.replace("_", " ").title()} task
+            ##### How to configure the {task.replace("_", " ").title()} task
 
             This section allows you to configure the settings for the {task.replace("_", " ").title()} task. Follow the steps below to update the configurations:
 
@@ -41,10 +42,21 @@ def render_individual_task_settings(task, task_config):
             
             fstring_warning()
 
-        description = st.text_area("Description", value=task_config_data.get("description", ""), 
-                                key=f"{task}_description", on_change=mark_changed)
-        expected_output = st.text_area("Expected Output", value=task_config_data.get("expected_output", ""), 
-                                    key=f"{task}_expected_output", on_change=mark_changed)
+        description = st.text_area("Description", 
+                                   value=task_config_data.get("description", ""), 
+                                   key=f"{task}_description", 
+                                   on_change=mark_changed,
+                                   help="""Provide a detailed description of the task. 
+                                   Include the purpose, scope, and any specific details 
+                                   that are important for understanding what this task entails.""")
+        
+        expected_output = st.text_area("Expected Output", 
+                                       value=task_config_data.get("expected_output", ""), 
+                                       key=f"{task}_expected_output", 
+                                       on_change=mark_changed,
+                                       help="""Specify the expected output or result of the task. 
+                                       Describe what the successful completion of this task looks like, 
+                                       including any deliverables or measurable outcomes.""")
 
     if st.session_state[f"{task}_changed"]:
         if st.button("Save", key=f"{task}_save"):
