@@ -72,8 +72,6 @@ poetry install
 
 ## 🚀 Usage
 
-## 🚀 Usage
-
 You have two options to run the application:
 
 1. Using the automated script (recommended):
